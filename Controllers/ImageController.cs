@@ -31,7 +31,6 @@ namespace ImageWebApp.Controllers
             return new Microsoft.AspNetCore.Mvc.JsonResult(_imageRepository.GetById(id));
         }
 
-
         [HttpPost]
         public Microsoft.AspNetCore.Mvc.JsonResult PostImage([FromBody] Image image)
         {

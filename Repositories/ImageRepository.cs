@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http; // IFormFile
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,8 +14,20 @@ namespace ImageWebApp.Repositories
         //private readonly ComputerVisionClient visionClient;
         public ImageRepository()
         {
-            Add(new Image { Content = "Teszt Elek", Created = DateTime.Now });
-            Add(new Image { Content = "Teszt Eva", Created = DateTime.Now });
+            Add(new Image { Content = File.ReadAllText("assets/im1"), Created = DateTime.Now, Owner = "User 1"});
+            Add(new Image { Content = File.ReadAllText("assets/im2"), Created = DateTime.Now, Owner = "User 2"});
+            Add(new Image { Content = File.ReadAllText("assets/im3"), Created = DateTime.Now, Owner = "User 3"});
+            Add(new Image { Content = File.ReadAllText("assets/im3"), Created = DateTime.Now, Owner = "User 1"});
+            Add(new Image { Content = File.ReadAllText("assets/im2"), Created = DateTime.Now, Owner = "User 2"});
+            Add(new Image { Content = File.ReadAllText("assets/im1"), Created = DateTime.Now, Owner = "User 3"});
+            Add(new Image { Content = File.ReadAllText("assets/im2"), Created = DateTime.Now, Owner = "User 1"});
+            Add(new Image { Content = File.ReadAllText("assets/im1"), Created = DateTime.Now, Owner = "User 2"});
+            Add(new Image { Content = File.ReadAllText("assets/im3"), Created = DateTime.Now, Owner = "User 3"});
+            Add(new Image { Content = File.ReadAllText("assets/im1"), Created = DateTime.Now, Owner = "User 1"});
+            Add(new Image { Content = File.ReadAllText("assets/im3"), Created = DateTime.Now, Owner = "User 2"});
+            Add(new Image { Content = File.ReadAllText("assets/im2"), Created = DateTime.Now, Owner = "User 3"});
+            Add(new Image { Content = File.ReadAllText("assets/im1"), Created = DateTime.Now, Owner = "User 1"});
+            Add(new Image { Content = File.ReadAllText("assets/im3"), Created = DateTime.Now, Owner = "User 2"});
         }
 
         public void Add(Image image)
@@ -31,26 +44,5 @@ namespace ImageWebApp.Repositories
         {
             return _images.FirstOrDefault(e => e.Id == id);
         }
-
-        //public void SaveImage(IFormFile file, User user)
-        //{
-        //    var bytes = new byte[file.Length];
-
-        //    List<string> tags = new List<string>();
-        //    using (var stream = file.OpenReadStream())
-        //    {
-        //        stream.Read(bytes, 0, bytes.Length);
-        //        stream.Seek(0, System.IO.SeekOrigin.Begin);
-        //    }
-        //    var img = new Image { Content = Convert.ToBase64String(bytes), Owner = user };
-
-        //    if (user.PostedImages == null)
-        //    {
-        //        user.PostedImages = new List<Image>();
-        //    }
-        //    _images.Add(img);
-
-        //    //this.imageRepository.Save(img);
-        //}
     }
 }

@@ -8,10 +8,12 @@ namespace ImageWebApp.Models
     public class Image
     {
         public static int currentId = 0;
-        public int Id { 
+        public int Id {
             get;
             set;
         }
+
+        public string Owner { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
     }

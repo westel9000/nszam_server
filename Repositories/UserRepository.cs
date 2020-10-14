@@ -13,8 +13,9 @@ namespace ImageWebApp.Repositories
         private List<User> _users = new List<User>();
         public UserRepository()
         {
-            _users.Add(new User { Id = 1, Name = "Para Zita" });
-            _users.Add(new User { Id = 2, Name = "Vegh Bela" });
+            _users.Add(new User { Id = 1, Name = "Arató András" });
+            _users.Add(new User { Id = 2, Name = "Alkalmas Attila" });
+            _users.Add(new User { Id = 2, Name = "Barkóczy Mátyás" });
         }
         public List<User> GetAll()
         {
