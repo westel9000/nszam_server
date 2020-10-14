@@ -1,5 +1,6 @@
 ﻿using ImageWebApp.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ImageWebApp.Repositories
 {
@@ -7,5 +8,6 @@ namespace ImageWebApp.Repositories
     {
         List<Image> GetAll();
         Image GetById(int id);
+        void Add(Image image);
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace ImageWebApp.Controllers
 {
@@ -18,16 +19,43 @@ namespace ImageWebApp.Controllers
         {
             _imageRepository = imageRepository;
         }
-        [HttpGet]
-        public JsonResult GetImages()
+        [Microsoft.AspNetCore.Mvc.HttpGet]
+        public Microsoft.AspNetCore.Mvc.JsonResult GetImages()
         {
             //return new JsonResult(new Image { Id = 1, Created = DateTime.Now, Content = "Teszt" }); // Teszt helyett majd base64 image string később.
-            return new JsonResult(_imageRepository.GetAll());
+            return new Microsoft.AspNetCore.Mvc.JsonResult(_imageRepository.GetAll());
         }
-        [HttpGet("{id}")]
-        public JsonResult GetImage(int id)
+        [Microsoft.AspNetCore.Mvc.HttpGet("{id}")]
+        public Microsoft.AspNetCore.Mvc.JsonResult GetImage(int id)
         {
-            return new JsonResult(_imageRepository.GetById(id));
+            return new Microsoft.AspNetCore.Mvc.JsonResult(_imageRepository.GetById(id));
         }
+
+
+        [HttpPost]
+        public Microsoft.AspNetCore.Mvc.JsonResult PostImage([FromBody] Image image)
+        {
+
+            _imageRepository.Add(image);
+            return new JsonResult("ok");
+        }
+
+        //[Microsoft.AspNetCore.Mvc.HttpPost]
+        //[Microsoft.AspNetCore.Mvc.Route("new")]
+        //public System.Web.Mvc.ActionResult Upload(ImageDTO imageDTO)
+        //{
+
+        //    try
+        //    {
+        //        //_imageRepository.SaveImage(imageDTO);
+        //        return new HttpStatusCodeResult(HttpStatusCode.OK);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        //return BadRequestResult(ex);
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //}
     }
 }
